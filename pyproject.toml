@@ -23,6 +23,10 @@ classifiers = [
   "Programming Language :: Python :: 3.12",
 ]
 
+[project.optional-dependencies]
+test = [
+    "pytest>=8.2.2",
+]
 
 [build-system]
 requires = ["scikit-build-core>=0.9.8", "pybind11"]
@@ -33,7 +37,8 @@ wheel.expand-macos-universal-tags = true
 
 [tool.cibuildwheel]
 build-frontend = "build"
-
+test-command = "pytest {project}/tests"
+test-extras = ["test"]
 
 [tool.pdm]
 distribution = true
