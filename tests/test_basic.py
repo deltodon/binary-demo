@@ -1,10 +1,10 @@
 from __future__ import annotations
 
-import scikit_build_example as m
+import binary_demo as m
 
 
 def test_version():
-    assert m.__version__ == "0.0.1"
+    assert m.__version__ == "0.1.0"
 
 
 def test_add():
