@@ -20,6 +20,13 @@ classifiers = [
 
 dependencies = []
 
+[dependency-groups]
+dev = [
+    "conan>=2.17.0",
+    "jupyterlab>=4.4.3",
+    "pytest>=8.3.5",
+]
+
 [tool.scikit-build]
 minimum-version = "build-system.requires"
 build-dir = "build/{wheel_tag}"
@@ -27,9 +34,3 @@ build-dir = "build/{wheel_tag}"
 [build-system]
 requires = ["scikit-build-core>=0.10", "pybind11"]
 build-backend = "scikit_build_core.build"
-
-[dependency-groups]
-dev = [
-    "jupyterlab>=4.4.3",
-    "pytest>=8.3.5",
-]
