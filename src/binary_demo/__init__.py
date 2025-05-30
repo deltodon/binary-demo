@@ -1,5 +1,25 @@
-from __future__ import annotations
+import importlib.metadata
 
-from ._core import __doc__, __version__, add, subtract
+from binary_demo._core import (
+    __doc__,
+    hello_from_bin,
+    add,
+    subtract
+)
 
-__all__ = ["__doc__", "__version__", "add", "subtract"]
+# Retrieve the version from package metadata (pyproject.toml)
+try:
+    __version__ = importlib.metadata.version("binary-demo")
+except importlib.metadata.PackageNotFoundError:
+    __version__ = "unknown"
+
+__all__ = [
+    "__doc__",
+    "__version__",
+    "add",
+    "subtract"
+]
+
+
+def hello() -> str:
+    return hello_from_bin()
