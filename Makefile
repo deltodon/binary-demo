@@ -28,6 +28,10 @@ jupyter:
 		uv run jupyter lab; \
 	fi
 
+test:
+	@echo "Running unit tests.."
+	@uv run pytest
+
 clean-venv:
 	@echo "Removing .venv directory.."
 	@rm -rf .venv
@@ -61,6 +65,7 @@ help:
 	@echo " make profile      - Set conan profile"
 	@echo " make build        - Build C++ package locally"
 	@echo " make jupyter      - Run JupyterLab"
+	@echo " make test         - Run unit tests"
 	@echo " make clean-docker - Remove Docker image"
 	@echo " make clean-venv   - Remove .venv"
 	@echo " make clean-build  - Remove build"
