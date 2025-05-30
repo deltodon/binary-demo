@@ -54,7 +54,13 @@ clean-docker:
 		echo "Docker image ${DOCKER_IMG} not found"; \
 	fi
 
-clean-all: clean-docker clean-build clean-conan clean-venv
+clean-python:
+	@echo "Removing Python build directories.."
+	@rm -rf `find -type d -name __pycache__`
+	@rm -rf `find -type d -name .pytest_cache`
+	@rm -rf `find -type d -name .ipynb_checkpoints`
+
+clean-all: clean-docker clean-build clean-conan clean-venv clean-python
 	@echo "All clean operations completed."
 
 
@@ -70,5 +76,6 @@ help:
 	@echo " make clean-venv   - Remove .venv"
 	@echo " make clean-build  - Remove build"
 	@echo " make clean-conan  - Remove .conan2 cache"
+	@echo " make clean-python - Remove Python build directories"
 	@echo " make clean-all    - Remove all binaries"
 	@echo ""
