@@ -28,6 +28,9 @@ jupyter:
 		uv run jupyter lab; \
 	fi
 
+rebuild: clean-build clean-venv
+	@uv sync --reinstall
+
 test:
 	@echo "Running unit tests.."
 	@uv run pytest

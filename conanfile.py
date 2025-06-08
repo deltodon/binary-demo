@@ -1,12 +1,10 @@
 from conan import ConanFile
 from conan.tools.cmake import CMakeToolchain, CMake, cmake_layout, CMakeDeps
 
-from binary_demo import __version__
-
 
 class binary_demoRecipe(ConanFile):
     name = "binary-demo"
-    version = __version__
+    version = "0.1.0"
     package_type = "library"
 
     # Optional metadata
@@ -22,7 +20,7 @@ class binary_demoRecipe(ConanFile):
     default_options = {"shared": False, "fPIC": True}
 
     # Sources are located in the same place as this recipe, copy them to the recipe
-    exports_sources = "CMakeLists.txt", "src/*"
+    exports_sources = "CMakeLists.txt", "src/*", "include/*"
 
     def config_options(self):
         if self.settings.os == "Windows":
@@ -32,9 +30,9 @@ class binary_demoRecipe(ConanFile):
         if self.options.shared:
             self.options.rm_safe("fPIC")
 
-    def requirements(self):
-        self.requires("gdal/3.8.3")
-        self.requires("onetbb/2022.0.0")
+    # def requirements(self):
+    #     self.requires("gdal/3.8.3")
+    #     self.requires("onetbb/2022.0.0")
 
     def layout(self):
         cmake_layout(self)
@@ -57,3 +55,4 @@ class binary_demoRecipe(ConanFile):
 
     def package_info(self):
         self.cpp_info.libs = ["binary-demo"]
+

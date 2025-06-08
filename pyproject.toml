@@ -31,6 +31,21 @@ dev = [
 minimum-version = "build-system.requires"
 build-dir = "build/{wheel_tag}"
 
+[tool.scikit-build-core-conan]
+path = "."
+build = "missing"
+profile = ".conan2/profiles/default"
+options = []
+settings = []
+config = []
+generators = ["CMakeToolchain", "CMakeDeps"]
+output-folder = "build"
+
 [build-system]
-requires = ["scikit-build-core>=0.10", "pybind11"]
-build-backend = "scikit_build_core.build"
+requires = [
+    "scikit-build-core==0.10.7",
+    "scikit-build-core-conan==0.7.0",
+    "pybind11"
+]
+build-backend = "scikit_build_core_conan.build"
+

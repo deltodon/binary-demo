@@ -1,4 +1,6 @@
 #include <pybind11/pybind11.h>
+#include <pybind11/stl.h>  // For std::vector conversions
+#include "binary-demo.h"   // Include the binary-demo header
 
 int add(int i, int j) {
   return i + j;
@@ -13,7 +15,7 @@ PYBIND11_MODULE(_core, m) {
       Pybind11 example plugin
       -----------------------
 
-      .. currentmodule:: scikit_build_example
+      .. currentmodule:: binary_demo
 
       .. autosummary::
         :toctree: _generate
@@ -38,5 +40,16 @@ PYBIND11_MODULE(_core, m) {
 
       Some other explanation about the subtract function.
   )pbdoc");
-
+  
+  // Add bindings for binary-demo functions
+  m.def("binary_demo_hello", &binary_demo_hello, R"pbdoc(
+      Prints information about the build environment.
+  )pbdoc");
+  
+  m.def("binary_demo_print_vector", &binary_demo_print_vector, R"pbdoc(
+      Prints each string in the provided vector.
+      
+      Args:
+          strings: A list of strings to print
+  )pbdoc");
 }
