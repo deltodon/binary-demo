@@ -43,8 +43,8 @@ output-folder = "build"
 
 [build-system]
 requires = [
-    "scikit-build-core==0.10.7",
-    "scikit-build-core-conan==0.7.0",
+    "scikit-build-core>=0.11.5",
+    "scikit-build-core-conan>=0.7.1",
     "pybind11"
 ]
 build-backend = "scikit_build_core_conan.build"
